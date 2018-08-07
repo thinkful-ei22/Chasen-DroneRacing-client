@@ -3,3 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.stat-bar{
+  border: black solid 1px;
+  width:50%;
+  display: inline-block;
+  text-align: center;
+}
+
