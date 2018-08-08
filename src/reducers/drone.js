@@ -10,7 +10,9 @@ import {START_RACE,SPEED_INC,ACCELERATION_INC,TURNING_INC, WEIGHT_INC,DRAG_INC,D
     drag: 75,
     durability: 75,
     handling: 75,
-    droneLevel: 75
+    droneLevel: 75,
+    user:{},
+    opponent:{}
   }
 
   export default function droneReducer(state=initialState, action){

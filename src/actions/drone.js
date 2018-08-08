@@ -9,13 +9,6 @@ export const DRAG_INC = 'DRAG_INC';
 export const DURABILITY_INC = 'DURABILITY_INC';
 export const HANDLING_INC = 'HANDLING_INC';
 
-// export const SPEED_DEC = 'SPEED_DEC'
-// export const ACCELERATION_DEC = 'ACCELERATION_DEC';
-// export const TURNING_DEC = 'TURNING_DEC';
-// export const WEIGHT_DEC = 'WEIGHT_DEC';
-// export const DRAG_DEC = 'DRAG_DEC';
-// export const DURABILITY_DEC = 'DURABILITY_DEC';
-// export const HANDLING_DEC = 'HANDLING_DEC';
 
 export const startRace = () => ({
   type: START_RACE,
