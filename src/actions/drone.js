@@ -1,6 +1,8 @@
 export const START_RACE = 'START_RACE';
+export const TUNE_DRONE_REQUEST = 'TUNE_DRONE_REQUEST';
+export const TUNE_DRONE_SUCCESS = 'TUNE_DRONE_SUCCESS';
+export const TUNE_DRONE_FAILURE = 'TUNE_DRONE_FAILURE';
 
-export const POINT_BALANCE = 'POINT_BALANCE';
 export const SPEED_INC = 'SPEED_INC'
 export const ACCELERATION_INC = 'ACCELERATION_INC';
 export const TURNING_INC = 'TURNING_INC';
@@ -9,14 +11,44 @@ export const DRAG_INC = 'DRAG_INC';
 export const DURABILITY_INC = 'DURABILITY_INC';
 export const HANDLING_INC = 'HANDLING_INC';
 
+export const tuneDroneRequest = () => ({
+  type: TUNE_DRONE_REQUEST
+})
+export const tuneDroneSuccess = () => ({
+  type: TUNE_DRONE_SUCCESS
+})
+export const tuneDroneFailure = () => ({
+  type: TUNE_DRONE_FAILURE
+})
+
+export const fetchDroneUpdate = () => dispatch => {
+  dispatch(tuneDroneRequest());
+  return fetch('http://localhost:8080/api/drone/:id')
+    .then(droneRes => {
+      if(!droneRes.ok){
+        return Promise.reject({
+          message: 'response NOT okay',
+          status: droneRes.status,
+          statusText: droneRes.statusText
+        });
+      }
+      return droneRes.json();
+    })
+    .then(result => {
+      return dispatch(tuneDroneSuccess());
+    })
+    .catch(err => {
+      console.log('ERR', err);
+      return dispatch(tuneDroneFailure(err.statusText));
+    })
+}
+
+
 
 export const startRace = () => ({
   type: START_RACE,
 })
 
-export const pointBalance = () => ({
-  type: POINT_BALANCE
-});
 export const speedInc = increment => ({
   type:SPEED_INC,
   increment
@@ -46,24 +78,3 @@ export const handlingInc = increment => ({
   increment
 });
 
-// export const speedDec = () => ({
-//   type:SPEED_DEC
-// })
-// export const accelerationDec = () => ({
-//   type: ACCELERATION_DEC
-// });
-// export const turningDec = () => ({
-//   type: TURNING_DEC
-// });
-// export const weightDec = () => ({
-//   type: WEIGHT_DEC
-// });
-// export const dragDec = () => ({
-//   type: DRAG_DEC
-// });
-// export const durabilityDec = () => ({
-//   type: DURABILITY_DEC
-// });
-// export const handlingDec = () => ({
-//   type: HANDLING_DEC
-// });

@@ -1,25 +1,40 @@
 import React from 'react';
 // import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import{reduxForm, Field} from 'redux-form';
+// import{required, notEmpty, lengthOfFive} from '../validators/validators';
+import Input from './input';
+import {required, nonEmpty, isTrimmed} from '../validators';
+import LoginSignup from './login-page';
+import LoginSignupRequest from '../actions/login'
 
-export default function Login(props){
-
-//   slugify(text) {
-//     return text
-//         .toString()
-//         .toLowerCase()
-//         .replace(/[\s\W-]+/g, '-');
-// }
-
-//   goToBoard(event) {
-//     event.preventDefault();
-//     this.props.history.push(`/board/${this.slugify(this.state.text)}`);
-// }
-  return (
-    <div>
-      <h1>Play as Guest</h1>
-      <button><Link to='/race'>1,2, DALE!</Link></button>
-    </div>
-  );
+export function Login(props) {
+  // onSubmit(values) {
+  //   console.log(values);
+  // }
+    return (     
+      <form 
+        id="login-form" 
+        className="login-form" 
+  
+      >
+        <fieldset>
+          <legend>Login</legend>
+          <div>
+            <label for="username">Username</label>
+            <Field type="text" name="username" className="username-entry" component={Input} value validate={[required, nonEmpty,isTrimmed]} />
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <Field type="password" name="password" className="password-entry" component={Input} value validate={[required, nonEmpty, isTrimmed]} />
+          </div>
+          <button type="submit">Login</button>
+        </fieldset>
+      </form>
+    );
 };
 
+
+export default reduxForm({
+  form: 'login'
+})(Login);
