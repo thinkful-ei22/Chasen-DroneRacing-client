@@ -8,7 +8,7 @@ export function Turning(props){
 };
 
 export const mapStateToProps = state => ({
-  turning: state.turning
+  turning: state.drone.turning
 });
 
 export default connect(mapStateToProps)(Turning);

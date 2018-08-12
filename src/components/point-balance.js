@@ -8,7 +8,7 @@ export function PointBalance(props){
 };
 
 export const mapStateToProps = state => ({
-  pointBalance: state.pointBalance
+  pointBalance: state.drone.pointBalance
 });
 
 export default connect(mapStateToProps)(PointBalance);

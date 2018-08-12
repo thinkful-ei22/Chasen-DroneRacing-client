@@ -8,7 +8,7 @@ export function Handling(props){
 };
 
 export const mapStateToProps = state => ({
-  handling: state.handling
+  handling: state.drone.handling
 });
 
 export default connect(mapStateToProps)(Handling);

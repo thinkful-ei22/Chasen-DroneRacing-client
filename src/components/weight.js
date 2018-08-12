@@ -8,7 +8,7 @@ export function Weight(props){
 };
 
 export const mapStateToProps = state => ({
-  weight: state.weight
+  weight: state.drone.weight
 });
 
 export default connect(mapStateToProps)(Weight);

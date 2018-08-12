@@ -1,4 +1,5 @@
-import {START_RACE,SPEED_INC,ACCELERATION_INC,TURNING_INC, WEIGHT_INC,DRAG_INC,DURABILITY_INC,HANDLING_INC} from '../actions/drone';
+import {START_RACE,SPEED_INC,ACCELERATION_INC,TURNING_INC, WEIGHT_INC,DRAG_INC,DURABILITY_INC,
+  HANDLING_INC, TUNE_DRONE_REQUEST, TUNE_DRONE_SUCCESS, TUNE_DRONE_FAILURE} from '../actions/drone';
 
   const initialState={
     startRace: false,
@@ -12,12 +13,33 @@ import {START_RACE,SPEED_INC,ACCELERATION_INC,TURNING_INC, WEIGHT_INC,DRAG_INC,D
     handling: 75,
     droneLevel: 75,
     user:{},
-    opponent:{}
+    opponent:{},
+    tuneLoading: false,
+    error: null
   }
 
   export default function droneReducer(state=initialState, action){
-    if(action.type === START_RACE){}
-    
+    // if(action.type === START_RACE){
+
+    // }
+    if (action.type === TUNE_DRONE_REQUEST){
+      return Object.assign({}, state, {
+        tuneLoading: true,
+        error: null
+      })
+    }
+    else if (action.type === TUNE_DRONE_SUCCESS){
+      return Object.assign({}, state, {
+        tuneLoading: false
+      })
+    }
+    else if (action.type === TUNE_DRONE_FAILURE){
+      console.log(action);
+      return Object.assign({}, state, {
+        tuneLoading: false,
+        error: action.error
+      })
+    }
     else if(action.type ===SPEED_INC){
       return Object.assign({},state, {speed: state.speed+action.increment, pointBalance: state.pointBalance-action.increment})
     }
@@ -39,14 +61,7 @@ import {START_RACE,SPEED_INC,ACCELERATION_INC,TURNING_INC, WEIGHT_INC,DRAG_INC,D
     else if(action.type ===HANDLING_INC){
       return Object.assign({},state, {handling: state.handling+action.increment, pointBalance: state.pointBalance-action.increment})
     }
-    // else if(action.type ===POINT_BALANCE){}
-    // else if(action.type ===SPEED_DEC){}
-    // else if(action.type ===ACCELERATION_DEC){}
-    // else if(action.type ===TURNING_DEC){}
-    // else if(action.type ===WEIGHT_DEC){}
-    // else if(action.type ===DRAG_DEC){}
-    // else if(action.type ===DURABILITY_DEC){}
-    // else if(action.type ===HANDLING_DEC){}
+    
     return state;
 
   }

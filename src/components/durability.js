@@ -8,7 +8,7 @@ export function Durability(props){
 };
 
 export const mapStateToProps = state => ({
-  durability: state.durability
+  durability: state.drone.durability
 });
 
 export default connect(mapStateToProps)(Durability);

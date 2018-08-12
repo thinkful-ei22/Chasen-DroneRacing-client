@@ -8,7 +8,7 @@ export function Drag(props){
 };
 
 export const mapStateToProps = state => ({
-  drag: state.drag
+  drag: state.drone.drag
 });
 
 export default connect(mapStateToProps)(Drag);

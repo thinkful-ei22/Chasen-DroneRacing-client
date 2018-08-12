@@ -17,13 +17,29 @@ export const tuneDroneRequest = () => ({
 export const tuneDroneSuccess = () => ({
   type: TUNE_DRONE_SUCCESS
 })
-export const tuneDroneFailure = () => ({
-  type: TUNE_DRONE_FAILURE
+export const tuneDroneFailure = error => ({
+  type: TUNE_DRONE_FAILURE,
+  error
 })
 
-export const fetchDroneUpdate = () => dispatch => {
+export const fetchDroneUpdate = (speed, acceleration, turning, weight, drag, durability, handling, pointBalance) => dispatch => {
   dispatch(tuneDroneRequest());
-  return fetch('http://localhost:8080/api/drone/:id')
+  return fetch('http://localhost:8080/api/drone/000000000000000000000001',{
+    method: "PUT",
+    headers:{
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      speed,
+      acceleration,
+      turning, 
+      weight, 
+      drag, 
+      durability, 
+      handling, 
+      pointBalance
+    })
+  })
     .then(droneRes => {
       if(!droneRes.ok){
         return Promise.reject({

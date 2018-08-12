@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import Speed from './speed';
 import Acceleration from './acceleration';
 import Turning from './turning';
@@ -48,19 +49,21 @@ function Racing(props){
           <span>{props.handling}>>Handling</span>
         </div>
       </div>
+      <button><Link to='/tuning'>TUNING</Link></button>
+      <button>RACE</button>
     </div>
   );
 };
 
 export const mapStateToProps = state => ({
-  speed: state.speed,
-  acceleration: state.acceleration,
-  turning: state.turning,
-  weight: state.weight,
-  drag: state.drag,
-  durability: state.durability,
-  handling: state.handling,
-  pointBalance: state.pointBalance
+  speed: state.drone.speed,
+  acceleration: state.drone.acceleration,
+  turning: state.drone.turning,
+  weight: state.drone.weight,
+  drag: state.drone.drag,
+  durability: state.drone.durability,
+  handling: state.drone.handling,
+  pointBalance: state.drone.pointBalance
 });
 
 export default connect(mapStateToProps)(Racing);

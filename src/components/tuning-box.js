@@ -9,9 +9,14 @@ import Drag from './drag';
 import Durability from './durability';
 import Handling from './handling';
 import PointBalance from './point-balance';
-import { speedInc, accelerationInc, turningInc, weightInc, dragInc, durabilityInc, handlingInc } from '../actions/drone';
+import DroneBox from './drone-box';
+import { speedInc, accelerationInc, turningInc, weightInc, dragInc, durabilityInc, handlingInc, fetchDroneUpdate } from '../actions/drone';
 
 function Tuning(props){
+
+  const state= {
+    disabled: props.pointBalance <0
+  }
 
   const fireAction = (action, stat , val) => {
     console.log('action fire');
@@ -24,7 +29,7 @@ function Tuning(props){
     }
   }
 
-  const {speed, acceleration, turning, weight, drag, durability, handling}= props;
+  const {speed, acceleration, turning, weight, drag, durability, handling, pointBalance}= props;
   const arr = [
     {stat:speed, action:speedInc, component:<Speed />, span:'>>Speed/Thrust'},
     {stat:acceleration, action:accelerationInc, component:<Acceleration />, span:'>>Acceleration'},
@@ -49,53 +54,41 @@ function Tuning(props){
   return (
     <div>
       <h1>DRONE RACING: TUNING</h1>
+      <DroneBox />
       <div className='tuning-box'>
         <h2>Drone Stats</h2>
         <PointBalance />
         {tuningButtons}
-        {/* <div>
-          <button className='incbutton' onClick={()=>{props.dispatch(speedInc(1))}}>+</button><Speed /><button className='decbutton' onClick={()=>{props.dispatch(speedInc(-1))}}>-</button> 
-          <span>{props.speed}>>Speed/Thrust</span>
-        </div>
-        <div>
-          <button className='incbutton' onClick={()=>{props.dispatch(accelerationInc(1))}}>+</button><Acceleration /><button className='decbutton' onClick={()=>{props.dispatch(accelerationInc(-1))}}>-</button>
-          <span>{props.acceleration}>>Acceleration</span>
-        </div>
-        <div>
-          <button className='incbutton' onClick={()=>{props.dispatch(turningInc(1))}}>+</button><Turning /><button className='decbutton' onClick={()=>{props.dispatch(turningInc(-1))}}>-</button>
-          <span>{props.turning}>>Turning</span>
-          </div>
-        <div>
-          <button className='incbutton' onClick={()=>{props.dispatch(weightInc(1))}}>+</button><Weight /><button className='decbutton' onClick={()=>{props.dispatch(weightInc(-1))}}>-</button>
-          <span>{props.weight}>>Weight</span>
-          </div>
-        <div>
-          <button className='incbutton' onClick={()=>{props.dispatch(dragInc(1))}}>+</button><Drag /><button className='decbutton' onClick={()=>{props.dispatch(dragInc(-1))}}>-</button>
-          <span>{props.drag}>>Drag</span>
-          </div>
-        <div>
-          <button className='incbutton' onClick={()=>{props.dispatch(durabilityInc(1))}}>+</button><Durability /><button className='decbutton' onClick={()=>{props.dispatch(durabilityInc(-1))}}>-</button>
-          <span>{props.durability}>>Durability</span>
-          </div>
-        <div>
-          <button className='incbutton' onClick={()=>{props.dispatch(handlingInc(1))}}>+</button><Handling /><button className='decbutton' onClick={()=>{props.dispatch(handlingInc(-1))}}>-</button>
-          <span>{props.handling}>>Handling</span>
-        </div> */}
       </div>
-      <button><Link to='/race/'>SAVE AND GO TO RACE!</Link></button>
+      <p className={props.pointBalance<0?'red':'hidden'}>Negative point balance not allowed, Please deduct points from one of your stats</p>
+      <button 
+        type='submit'
+        disabled={props.pointBalance<0}
+        onClick={e=>{
+          e.preventDefault();
+          console.log(props.error);
+          props.dispatch(fetchDroneUpdate(speed, acceleration, turning, weight, drag, durability, handling, pointBalance))
+      }}>
+        {props.pointBalance<0
+          ? 'Disabled: SAVE AND GO TO RACE!'
+          : <Link to='/race/'>SAVE AND GO TO RACE!</Link>
+        }
+      </button>
     </div>
   );
 };
 
 export const mapStateToProps = state => ({
-  speed: state.speed,
-  acceleration: state.acceleration,
-  turning: state.turning,
-  weight: state.weight,
-  drag: state.drag,
-  durability: state.durability,
-  handling: state.handling,
-  pointBalance: state.pointBalance
+  speed: state.drone.speed,
+  acceleration: state.drone.acceleration,
+  turning: state.drone.turning,
+  weight: state.drone.weight,
+  drag: state.drone.drag,
+  durability: state.drone.durability,
+  handling: state.drone.handling,
+  pointBalance: state.drone.pointBalance,
+  error: state.drone.error,
+  tuningLoading: state.drone.tuningLoading
 });
 
 export default connect(mapStateToProps)(Tuning);

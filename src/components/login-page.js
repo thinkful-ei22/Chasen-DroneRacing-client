@@ -1,13 +1,25 @@
 import React from 'react';
 
-import Login from './login';
-import  Signup  from './sign-up';
+import LoginForm from './login-form';
+import {connect} from 'react-redux';
+import {Link, Redirect} from 'react-router-dom';
 
-export default function LoginSignup(){
+export function LoginSignup(props){
+
+    if (props.loggedIn){
+      return <Redirect to='/race' />;
+    }
     return (
       <div>
-        <Login />
-        <Signup />
+        <h2>Welcome to Drone Racing</h2>
+        <LoginForm/>
+        <Link to='/register'>Register</Link>
       </div>
     );
 }
+
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+});
+
+export default connect(mapStateToProps)(LoginSignup);

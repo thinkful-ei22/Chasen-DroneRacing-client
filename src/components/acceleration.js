@@ -8,7 +8,7 @@ export function Acceleration(props){
 };
 
 export const mapStateToProps = state => ({
-  acceleration: state.acceleration
+  acceleration: state.drone.acceleration
 });
 
 export default connect(mapStateToProps)(Acceleration);

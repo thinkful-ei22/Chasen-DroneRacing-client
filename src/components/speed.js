@@ -8,7 +8,7 @@ export function Speed(props){
 };
 
 export const mapStateToProps = state => ({
-  speed: state.speed
+  speed: state.drone.speed
 });
 
 export default connect(mapStateToProps)(Speed);
