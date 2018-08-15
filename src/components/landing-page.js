@@ -6,13 +6,13 @@ import LoginForm from './login-form';
 
 export function LandingPage(props) {
     // If we are logged in redirect straight to the user's dashboard
-    if (props.loggedIn) {
-        return <Redirect to="/dashboard" />;
+    if (props.loggedIn.constructor === Object && Object.keys(props.loggedIn).length !== 0) {
+        return <Redirect to="/race" />;
     }
 
     return (
         <div className="home">
-            <h2>Welcome to Foo App</h2>
+            <h2>Please Login</h2>
             <LoginForm />
             <Link to="/register">Register</Link>
         </div>
@@ -20,7 +20,9 @@ export function LandingPage(props) {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+
+    ////obj.constructor === Object && check has keys Object.keys(objuser).length!===0
+    loggedIn: state.drone.user 
 });
 
 export default connect(mapStateToProps)(LandingPage);

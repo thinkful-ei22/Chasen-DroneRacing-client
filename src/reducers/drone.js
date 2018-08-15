@@ -1,12 +1,14 @@
 import {START_RACE,SPEED_INC,ACCELERATION_INC,TURNING_INC, WEIGHT_INC,DRAG_INC,DURABILITY_INC,
-  HANDLING_INC, TUNE_DRONE_REQUEST, TUNE_DRONE_SUCCESS, TUNE_DRONE_FAILURE} from '../actions/drone';
+  HANDLING_INC, TUNE_DRONE_REQUEST, TUNE_DRONE_SUCCESS, TUNE_DRONE_FAILURE, FIND_OPPONENT_FAILURE,
+  FIND_OPPONENT_SUCCESS, FIND_OPPONENT_REQUEST} from '../actions/drone';
+import {DRONE_SUCCESS} from '../actions/auth';
 
   const initialState={
     startRace: false,
     pointBalance: 0,
-    speed: 75, 
-    acceleration: 75,
-    turning: 75,
+    speed: 80, 
+    acceleration: 80,
+    turning: 80,
     weight: 75,
     drag: 75,
     durability: 75,
@@ -15,6 +17,7 @@ import {START_RACE,SPEED_INC,ACCELERATION_INC,TURNING_INC, WEIGHT_INC,DRAG_INC,D
     user:{},
     opponent:{},
     tuneLoading: false,
+    OppLoading: false,
     error: null
   }
 
@@ -27,6 +30,39 @@ import {START_RACE,SPEED_INC,ACCELERATION_INC,TURNING_INC, WEIGHT_INC,DRAG_INC,D
         tuneLoading: true,
         error: null
       })
+    }
+    else if (action.type === FIND_OPPONENT_REQUEST){
+      return Object.assign({}, state, {
+        OppLoading: true,
+        error: null
+      })
+    }
+    else if (action.type === FIND_OPPONENT_SUCCESS){
+      console.log(action.opponent);
+      return Object.assign({}, state, {
+        opponent: action.opponent,
+        OppLoading: false,
+        error: null
+      })
+    }
+    else if (action.type === FIND_OPPONENT_FAILURE){
+      return Object.assign({}, state, {
+        OppLoading: false,
+        error: action.error
+      })
+    }
+    else if (action.type === DRONE_SUCCESS) {
+      const {droneId} = action.currentUser
+      return Object.assign({}, state, {
+          user: action.currentUser,
+          speed: droneId.speed,
+          acceleration: droneId.acceleration,
+          turning: droneId.turning,
+          weight: droneId.weight,
+          drag: droneId.drag,
+          durability: droneId.durability,
+          handling: droneId.handling
+      });
     }
     else if (action.type === TUNE_DRONE_SUCCESS){
       return Object.assign({}, state, {

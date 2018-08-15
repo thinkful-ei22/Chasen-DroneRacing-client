@@ -5,7 +5,7 @@ import Tuning from './components/tuning-box';
 import Racing from './components/drone-racing';
 import {connect} from 'react-redux';
 
-import LoginPage from './components/login-page';
+
 import LandingPage from './components/landing-page';
 import HeaderBar from './components/header-bar';
 import RegistrationPage from './components/registration-page';
@@ -19,8 +19,8 @@ export class App extends React.Component{
     } else if (prevProps.loggedIn && !this.props.loggedIn) {
       // Stop refreshing when we log out
       this.stopPeriodicRefresh();
+    }
   }
-}
 
   componentWillUnmount() {
     this.stopPeriodicRefresh();
@@ -45,6 +45,7 @@ export class App extends React.Component{
     return (
       <Router>
         <div className='app'>
+          <HeaderBar />
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/tuning' component={Tuning} />
           <Route exact path='/race' component= {Racing} />

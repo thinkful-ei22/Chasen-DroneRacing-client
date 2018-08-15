@@ -14,10 +14,6 @@ import { speedInc, accelerationInc, turningInc, weightInc, dragInc, durabilityIn
 
 function Tuning(props){
 
-  const state= {
-    disabled: props.pointBalance <0
-  }
-
   const fireAction = (action, stat , val) => {
     console.log('action fire');
     if (stat > 0 && stat < 100){
@@ -29,7 +25,7 @@ function Tuning(props){
     }
   }
 
-  const {speed, acceleration, turning, weight, drag, durability, handling, pointBalance}= props;
+  const {speed, acceleration, turning, weight, drag, durability, handling, pointBalance, user}= props;
   const arr = [
     {stat:speed, action:speedInc, component:<Speed />, span:'>>Speed/Thrust'},
     {stat:acceleration, action:accelerationInc, component:<Acceleration />, span:'>>Acceleration'},
@@ -50,7 +46,8 @@ function Tuning(props){
     </div>)
   })
 
-  console.log(tuningButtons);
+ 
+  console.log(user);
   return (
     <div>
       <h1>DRONE RACING: TUNING</h1>
@@ -67,7 +64,7 @@ function Tuning(props){
         onClick={e=>{
           e.preventDefault();
           console.log(props.error);
-          props.dispatch(fetchDroneUpdate(speed, acceleration, turning, weight, drag, durability, handling, pointBalance))
+          props.dispatch(fetchDroneUpdate(speed, acceleration, turning, weight, drag, durability, handling, pointBalance, user))
       }}>
         {props.pointBalance<0
           ? 'Disabled: SAVE AND GO TO RACE!'
@@ -79,6 +76,7 @@ function Tuning(props){
 };
 
 export const mapStateToProps = state => ({
+  user: state.drone.user,
   speed: state.drone.speed,
   acceleration: state.drone.acceleration,
   turning: state.drone.turning,

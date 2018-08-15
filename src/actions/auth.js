@@ -22,7 +22,7 @@ export const authRequest = () => ({
 });
 
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-export const authSuccess = currentUser => ({
+export const authSuccess = (currentUser) => ({
     type: AUTH_SUCCESS,
     currentUser
 });
@@ -33,19 +33,27 @@ export const authError = error => ({
     error
 });
 
+export const DRONE_SUCCESS = 'DRONE_SUCCESS';
+export const droneSuccess = currentUser => ({
+    type: DRONE_SUCCESS,
+    currentUser
+});
+
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken);
+    console.log(decodedToken);
     dispatch(setAuthToken(authToken));
     dispatch(authSuccess(decodedToken.user));
+    dispatch(droneSuccess(decodedToken.user));
     saveAuthToken(authToken);
 };
 
 export const login = (username, password) => dispatch => {
     dispatch(authRequest());
     return (
-        fetch(`${API_BASE_URL}/auth/login`, {
+        fetch(`${API_BASE_URL}/api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -81,7 +89,7 @@ export const login = (username, password) => dispatch => {
 export const refreshAuthToken = () => (dispatch, getState) => {
     dispatch(authRequest());
     const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/auth/refresh`, {
+    return fetch(`${API_BASE_URL}/api/auth/refresh`, {
         method: 'POST',
         headers: {
             // Provide our existing token as credentials to get a new one

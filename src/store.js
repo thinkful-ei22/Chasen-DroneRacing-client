@@ -4,10 +4,13 @@ import droneReducer from './reducers/drone';
 import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import {reducer as formReducer} from 'redux-form'
+import {loadAuthToken} from './local-storage';
+import {setAuthToken, refreshAuthToken} from './actions/auth';
+
 // import { composeWithDevTools } from 'redux-devtools-extension';
 
 
-export default createStore(
+const store = createStore(
   
   combineReducers({
     drone:droneReducer, 
@@ -20,3 +23,12 @@ export default createStore(
   
 );
 
+// Hydrate the authToken from localStorage if it exist
+const authToken = loadAuthToken();
+if (authToken) {
+    const token = authToken;
+    store.dispatch(setAuthToken(token));
+    store.dispatch(refreshAuthToken());
+}
+
+export default store;

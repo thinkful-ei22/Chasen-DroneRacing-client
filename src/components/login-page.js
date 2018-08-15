@@ -11,7 +11,7 @@ export function LoginSignup(props){
     }
     return (
       <div>
-        <h2>Welcome to Drone Racing</h2>
+        <h2>Please Login</h2>
         <LoginForm/>
         <Link to='/register'>Register</Link>
       </div>
