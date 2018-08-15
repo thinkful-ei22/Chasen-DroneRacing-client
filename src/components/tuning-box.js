@@ -24,7 +24,7 @@ function Tuning(props){
       props.dispatch(action(val));
     }
   }
-
+  console.log(props.user);
   const {speed, acceleration, turning, weight, drag, durability, handling, pointBalance, user}= props;
   const arr = [
     {stat:speed, action:speedInc, component:<Speed />, span:'>>Speed/Thrust'},
@@ -63,7 +63,6 @@ function Tuning(props){
         disabled={props.pointBalance<0}
         onClick={e=>{
           e.preventDefault();
-          console.log(props.error);
           props.dispatch(fetchDroneUpdate(speed, acceleration, turning, weight, drag, durability, handling, pointBalance, user))
       }}>
         {props.pointBalance<0
