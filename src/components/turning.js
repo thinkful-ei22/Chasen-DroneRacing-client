@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 export function Turning(props){
   return (
-    <div className='stat-bar'>{props.turning}</div>
+    <div className='stat-bar stat-bar-tuningpg'>{props.turning}</div>
   );
 };
 

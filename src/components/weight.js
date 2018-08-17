@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 export function Weight(props){
   return (
-    <div className='stat-bar'>{props.weight}</div>
+    <div className='stat-bar stat-bar-tuningpg'>{props.weight}</div>
   );
 };
 

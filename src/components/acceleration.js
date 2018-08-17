@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 export function Acceleration(props){
   return (
-    <div className='stat-bar'>{props.acceleration}</div>
+    <div className='stat-bar stat-bar-tuningpg'>{props.acceleration}</div>
   );
 };
 

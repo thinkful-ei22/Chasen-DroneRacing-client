@@ -1,7 +1,19 @@
+html{
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  text-align: center;
+  margin: auto;
+}
+h1{
+  text-align: center;
+  padding-bottom: .5em;
+}
+.welcome-title{
+  padding-top: 25px;
 }
 .stat-bar{
   border: black solid 1px;
@@ -15,7 +27,138 @@ body {
 .red{
   color:red;
 }
-
 .racetrack{
   width: 300px;
+}
+.drone-box{
+  text-align: center;
+}
+.tuning-box{
+  border: 1px black solid;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+}
+.stat-box{
+  /* display: inline-block; */
+  margin: 0 auto;
+  text-align: left;
+  /* border: red solid 1px; */
+  width:380px;
+  padding-bottom: 20px;
+  /* padding-left: 10px; */
+}
+.stats-title-box{
+  /* display: inline-block; */
+  text-align: left;
+  width:380px;
+  margin: 20px auto;
+  /* border: red solid 1px; */
+}
+.drone-stats{
+  padding: 5px;
+}
+.drone-stats span{
+  padding:10px;
+}
+.drone-racing{
+  text-align: center;
+}
+.stats-title{
+  text-align: left;
+  display:inline;
+  width: 50%;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  margin: 10px 20px;
+}
+.point-balance{
+  /* display: inline; */
+  float: right;
+  padding-right: 50px;
+}
+@media screen and (max-width: 360px){
+  .stat-bar{
+    width:40%;
+  }
+  .stat-bar-tuningpg{
+    width: 25% !important;
+  }
+  .point-balance{
+    padding-right: 90px;
+  }
+}
+@media screen and (max-width: 515px){
+  .stat-bar-tuningpg{
+    width: 37%;
+  }
+}
+@media screen and (min-width: 515px){
+  .tuning-box{
+    width: 500px;
+  }
+  .stat-box{
+    width: 390px;
+  }
+  .racing-span{
+    padding-left: 26px !important;
+  }
+  .drone-stats span{
+    padding-left: 10px;
+  }
+}
+img{
+  padding: 10px;
+  padding-bottom: 20px;
+}
+
+.racing-btn{
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 20px 30px;
+  text-decoration: none;
+  cursor: pointer;
+  border: solid black 1px;
+}
+a:-webkit-any-link {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+.link{
+  color:-webkit-link!important;
+  text-decoration: underline!important;
+}
+.header-bar{
+  text-align: right; 
+}
+.logout-btn{
+  margin: 5px 5px 0 0;
+}
+.feedback{
+  padding-bottom: 15px;
+  color: rgb(204, 0, 0);
+  font-weight: bold;
+  width:350px;
+  margin: 0 auto;
+}
+.flag{
+  width:50px;
+  display: inline-block;
+}
+.login-form{
+  border-radius:20px;
+  border: black solid 1px;
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding:30px
+}
+label, input {
+  margin-bottom: 20px;
+}
+.login-form legend{
+  font-size: 25px;
+  margin-bottom: 20px;
 }

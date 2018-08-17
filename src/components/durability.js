@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 export function Durability(props){
   return (
-    <div className='stat-bar'>{props.durability}</div>
+    <div className='stat-bar stat-bar-tuningpg'>{props.durability}</div>
   );
 };
 

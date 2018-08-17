@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 export function Handling(props){
   return (
-    <div className='stat-bar'>{props.handling}</div>
+    <div className='stat-bar stat-bar-tuningpg'>{props.handling}</div>
   );
 };
 

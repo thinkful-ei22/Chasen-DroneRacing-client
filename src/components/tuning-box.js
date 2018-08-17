@@ -27,38 +27,46 @@ function Tuning(props){
   console.log(props.user);
   const {speed, acceleration, turning, weight, drag, durability, handling, pointBalance, user}= props;
   const arr = [
-    {stat:speed, action:speedInc, component:<Speed />, span:'>>Speed/Thrust'},
-    {stat:acceleration, action:accelerationInc, component:<Acceleration />, span:'>>Acceleration'},
-    {stat:turning, action:turningInc, component:<Turning />, span:'>>turning'},
-    {stat:weight, action:weightInc, component:<Weight />, span:'>>weight'},
-    {stat:drag, action:dragInc, component:<Drag />, span:'>>drag'},
-    {stat:durability, action:durabilityInc, component:<Durability />, span:'>>durability'},
-    {stat:handling, action:handlingInc, component:<Handling />, span:'>>handling'}
+    {stat:speed, action:speedInc, component:<Speed />, span:' >> Speed'},
+    {stat:acceleration, action:accelerationInc, component:<Acceleration />, span:' >> Acceleration'},
+    {stat:turning, action:turningInc, component:<Turning />, span:' >> turning'},
+    {stat:weight, action:weightInc, component:<Weight />, span:' >> weight'},
+    {stat:drag, action:dragInc, component:<Drag />, span:' >> drag'},
+    {stat:durability, action:durabilityInc, component:<Durability />, span:' >> durability'},
+    {stat:handling, action:handlingInc, component:<Handling />, span:' >> handling'}
   ];
 
   const tuningButtons = arr.map((button, i) => {
     return (
-    <div key={i}>
+    <div key={i} className='drone-stats'>
       <button className='incbutton' onClick={()=>{fireAction(button.action, button.stat, 1)}}>+</button>
       {button.component}
-      <button className='decbutton' onClick={()=>{fireAction(button.action, button.stat, -1)}}>-</button> 
-      <span>{button.stat}{button.span}</span>
+      <button className='decbutton' onClick={()=>{fireAction(button.action, button.stat, -1)}}>-</button>
+      
+      
+        <span>{button.stat}{button.span}</span>
+      
     </div>)
   })
 
  
   console.log(user);
   return (
-    <div>
+    <div className='drone-racing'>
       <h1>DRONE RACING: TUNING</h1>
       <DroneBox />
       <div className='tuning-box'>
-        <h2>Drone Stats</h2>
-        <PointBalance />
-        {tuningButtons}
+        <div className='stats-title-box'>
+          <h3 className='stats-title'>Drone Level: 1</h3>
+          <PointBalance />
+        </div>
+        <div className='stat-box'>
+          {tuningButtons}
+        </div>
       </div>
       <p className={props.pointBalance<0?'red':'hidden'}>Negative point balance not allowed, Please deduct points from one of your stats</p>
       <button 
+        className='racing-btn'
         type='submit'
         disabled={props.pointBalance<0}
         onClick={e=>{

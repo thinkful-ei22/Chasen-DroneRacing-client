@@ -8,7 +8,7 @@ export function Feedback(props){
   let winLose;
   // (props.loggedIn.constructor === Object && Object.keys(props.loggedIn).length !== 0)
   if(user !== undefined && Object.keys(user).length !== 0 && Object.keys(opponent).length !== 0){
-    const {speed, acceleration, turning, weight, drag, durability, handling, pointBalance, user}= props;
+    const {speed, acceleration, turning, weight, drag, durability, handling, user}= props;
     const userScore = speed*16+acceleration*19+turning*18+weight*11+drag*11+durability*9+handling*16;
     const opponentScore = opponent.speed*16+opponent.acceleration*19+opponent.turning*18+opponent.weight*11+opponent.drag*11+opponent.durability*9+opponent.handling*16;
     console.log(user);
@@ -16,19 +16,21 @@ export function Feedback(props){
     console.log(userScore);
     console.log(opponentScore);
     if(userScore>opponentScore){
-      winLose='You Won!!'
+      winLose='YOU WON!!'
     }else if(userScore===opponentScore){
       winLose="You Tied try again"
     }else{
-      winLose='Oh no You Lost'
+      winLose='Oh No You Lost, Try Again'
     }
   }
   
 
 
   return (
-    <div>
+    <div className='feedback'>
+      {winLose?<img src='https://ae01.alicdn.com/kf/HTB1TSPeOpXXXXcHXXXXq6xXFXXXy/11cm-18cm-Checkered-Flag-Cartoon-Car-Styling-Decorative-Vinyl-Stickers-Black-Silver-S3-4773.jpg_640x640.jpg' alt='racing checkered flag' className='flag' />:''}
       {winLose}
+      {winLose?<img src='https://ae01.alicdn.com/kf/HTB1TSPeOpXXXXcHXXXXq6xXFXXXy/11cm-18cm-Checkered-Flag-Cartoon-Car-Styling-Decorative-Vinyl-Stickers-Black-Silver-S3-4773.jpg_640x640.jpg' alt='racing checkered flag' className='flag' />:''}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 export function Drag(props){
   return (
-    <div className='stat-bar'>{props.drag}</div>
+    <div className='stat-bar stat-bar-tuningpg'>{props.drag}</div>
   );
 };
 

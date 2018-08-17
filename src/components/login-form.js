@@ -27,6 +27,7 @@ export class LoginForm extends React.Component {
               onSubmit={this.props.handleSubmit(values =>
                   this.onSubmit(values)
               )}>
+              <legend>Please Login</legend>
               {error}
               <label htmlFor="username">Username</label>
               <Field

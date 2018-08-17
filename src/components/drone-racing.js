@@ -16,44 +16,49 @@ import {fetchOpponentDrone} from '../actions/drone';
 function Racing(props){
   
   return (
-    <div>
+    <div className='drone-racing'>
       <h1>DRONE RACING: THE BIG RACE</h1>
-      <Feedback />
       <DroneBox />
+      <Feedback />
       <div className='tuning-box'>
-        <h2>Drone Stats</h2>
-        <PointBalance />
-        <div>
-          <Speed /> 
-          <span>{props.speed}>>Speed/Thrust</span>
+        <div className='stats-title-box'>
+          <h3 className='stats-title'>Drone Level: 1</h3>
+          <PointBalance />
         </div>
-        <div>
-          <Acceleration />
-          <span>{props.acceleration}>>Acceleration</span>
-        </div>
-        <div>
-          <Turning />
-          <span>{props.turning}>>Turning</span>
-        </div>
-        <div>
-          <Weight />
-          <span>{props.weight}>>Weight</span>
-        </div>
-        <div>
-          <Drag />
-          <span>{props.drag}>>Drag</span>
-        </div>
-        <div>
-          <Durability />
-          <span>{props.durability}>>Durability</span>
-        </div>
-        <div>
-          <Handling />
-          <span>{props.handling}>>Handling</span>
+        <div className='stat-box'>
+          <div className='drone-stats'>
+            <Speed /> 
+            <span className='racing-span'>{props.speed} >> Speed</span>
+          </div>
+          <div className='drone-stats'>
+            <Acceleration />
+            <span className='racing-span'>{props.acceleration} >> Acceleration</span>
+          </div>
+          <div className='drone-stats'>
+            <Turning />
+            <span className='racing-span'>{props.turning} >> Turning</span>
+          </div>
+          <div className='drone-stats'>
+            <Weight />
+            <span className='racing-span'>{props.weight} >> Weight</span>
+          </div>
+          <div className='drone-stats'>
+            <Drag />
+            <span className='racing-span'>{props.drag} >> Drag</span>
+          </div>
+          <div className='drone-stats'>
+            <Durability />
+            <span className='racing-span'>{props.durability} >> Durability</span>
+          </div>
+          <div className='drone-stats'>
+            <Handling />
+            <span className='racing-span'>{props.handling} >> Handling</span>
+          </div>
         </div>
       </div>
-      <button><Link to='/tuning'>TUNING</Link></button>
+      <button className='racing-btn'><Link to='/tuning'>TUNING</Link></button>
       <button
+        className='racing-btn'
         onClick={e=>{
           e.preventDefault();
           console.log(props.user);
