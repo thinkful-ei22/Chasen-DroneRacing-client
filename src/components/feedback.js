@@ -6,15 +6,11 @@ export function Feedback(props){
   const user = props.user.droneId;
   const opponent = props.opponent;
   let winLose;
-  // (props.loggedIn.constructor === Object && Object.keys(props.loggedIn).length !== 0)
+  
   if(user !== undefined && Object.keys(user).length !== 0 && Object.keys(opponent).length !== 0){
     const {speed, acceleration, turning, weight, drag, durability, handling, user}= props;
     const userScore = speed*16+acceleration*19+turning*18+weight*11+drag*11+durability*9+handling*16;
     const opponentScore = opponent.speed*16+opponent.acceleration*19+opponent.turning*18+opponent.weight*11+opponent.drag*11+opponent.durability*9+opponent.handling*16;
-    console.log(user);
-    console.log(opponent);
-    console.log(userScore);
-    console.log(opponentScore);
     if(userScore>opponentScore){
       winLose='YOU WON!!'
     }else if(userScore===opponentScore){

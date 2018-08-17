@@ -1,8 +1,5 @@
 import React from 'react';
-// import {connect} from 'react-redux';
-// import {Link} from 'react-router-dom';
 import{reduxForm, Field, focus} from 'redux-form';
-// import{required, notEmpty, lengthOfFive} from '../validators/validators';
 import Input from './input';
 import {required, nonEmpty, isTrimmed} from '../validators';
 import {login} from '../actions/auth';

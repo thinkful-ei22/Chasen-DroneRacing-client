@@ -15,7 +15,6 @@ import { speedInc, accelerationInc, turningInc, weightInc, dragInc, durabilityIn
 function Tuning(props){
 
   const fireAction = (action, stat , val) => {
-    console.log('action fire');
     if (stat > 0 && stat < 100){
       props.dispatch(action(val));
     }else if(stat ===0 && val===1){
@@ -24,7 +23,7 @@ function Tuning(props){
       props.dispatch(action(val));
     }
   }
-  console.log(props.user);
+
   const {speed, acceleration, turning, weight, drag, durability, handling, pointBalance, user}= props;
   const arr = [
     {stat:speed, action:speedInc, component:<Speed />, span:' >> Speed'},
@@ -50,7 +49,7 @@ function Tuning(props){
   })
 
  
-  console.log(user);
+  
   return (
     <div className='drone-racing'>
       <h1>DRONE RACING: TUNING</h1>

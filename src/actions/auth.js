@@ -39,8 +39,7 @@ export const droneSuccess = currentUser => ({
     currentUser
 });
 
-// Stores the auth token in state and localStorage, and decodes and stores
-// the user data stored in the token
+// Stores the auth token in state and localStorage, decodes and store the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken);
     console.log(decodedToken);
@@ -63,8 +62,7 @@ export const login = (username, password) => dispatch => {
                 password
             })
         })
-            // Reject any requests which don't return a 200 status, creating
-            // errors which follow a consistent format
+            // Reject any requests which don't return a 200 status
             .then(res => normalizeResponseErrors(res))
             .then(res => res.json())
             .then(({authToken}) => storeAuthInfo(authToken, dispatch))
@@ -75,8 +73,7 @@ export const login = (username, password) => dispatch => {
                         ? 'Incorrect username or password'
                         : 'Unable to login, please try again';
                 dispatch(authError(err));
-                // Could not authenticate, so return a SubmissionError for Redux
-                // Form
+                
                 return Promise.reject(
                     new SubmissionError({
                         _error: message

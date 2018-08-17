@@ -41,7 +41,6 @@ export const findOpponentFailure = error => ({
 
 export const fetchOpponentDrone = id => dispatch => {
   dispatch(findOpponentRequest());
-  console.log(id);
   return fetch(`${API_BASE_URL}/api/drone/${id}`,{
     method: "GET",
     headers:{
@@ -104,8 +103,6 @@ export const fetchDroneUpdate = (speed, acceleration, turning, weight, drag, dur
       return dispatch(tuneDroneFailure(err.statusText));
     })
 }
-
-
 
 export const startRace = () => ({
   type: START_RACE,

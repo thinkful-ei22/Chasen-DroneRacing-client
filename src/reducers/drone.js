@@ -22,9 +22,7 @@ import {DRONE_SUCCESS} from '../actions/auth';
   }
 
   export default function droneReducer(state=initialState, action){
-    // if(action.type === START_RACE){
-
-    // }
+    
     if (action.type === TUNE_DRONE_REQUEST){
       return Object.assign({}, state, {
         tuneLoading: true,

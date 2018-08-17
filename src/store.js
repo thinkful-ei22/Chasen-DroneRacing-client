@@ -7,7 +7,6 @@ import {reducer as formReducer} from 'redux-form'
 import {loadAuthToken} from './local-storage';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
-// import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 const store = createStore(

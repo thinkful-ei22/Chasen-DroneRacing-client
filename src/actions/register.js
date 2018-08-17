@@ -10,7 +10,7 @@ export const registerUser = user => dispatch => {
           'Content-Type': 'application/json'
       }
   })
-  .then(res => normalizeResponseErrors(res)) ///boilerplate for handling errors from API
+  .then(res => normalizeResponseErrors(res)) 
   .then(res => res.json())
   .catch(err => {
     const {reason, message, location} = err;

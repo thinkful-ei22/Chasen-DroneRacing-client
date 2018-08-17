@@ -61,7 +61,6 @@ function Racing(props){
         className='racing-btn'
         onClick={e=>{
           e.preventDefault();
-          console.log(props.user);
           props.dispatch(fetchOpponentDrone(props.user.droneId.id))
         }}
       >

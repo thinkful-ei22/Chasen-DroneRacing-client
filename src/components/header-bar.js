@@ -13,7 +13,6 @@ export class HeaderBar extends React.Component {
     };
     
     render() {
-        console.log(this.props.loggedIn);
         let logOutButton;
         let title;
         if (this.props.loggedIn) {
@@ -30,7 +29,6 @@ export class HeaderBar extends React.Component {
             );
         }
         if (!this.props.loggedIn){
-            console.log('not logged');
             title = (
                 <h1 className='welcome-title'>Welcome To Drone Racing</h1>
             );
