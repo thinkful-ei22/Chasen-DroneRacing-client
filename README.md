@@ -1,4 +1,10 @@
-  DRONE RACING: THE BIG RACE         ----->    https://drone-racing-client.herokuapp.com/
+#  DRONE RACING: THE BIG RACE  
+
+https://drone-racing-client.herokuapp.com/
+
+![](https://github.com/thinkful-ei22/Chasen-DroneRacing-client/blob/master/images/Screenshot16.12.37.png?raw=true)
+![](https://github.com/thinkful-ei22/Chasen-DroneRacing-client/blob/master/images/Screensho16.10.03.png?raw=true)
+![](https://github.com/thinkful-ei22/Chasen-DroneRacing-client/blob/master/images/Screenshot16.12.24.png?raw=true)
 
 The Drone Racing Application allows a user to login, create, and tune a 2018 AAI RQ-7A BLACK HAWK drone based on the specifications of speed, acceleration, turning, weight, drag, durability, and handling.  Once the user is satisfied with the tuning of their drone they are able to race against another users drone that is in the database.  Based on the specifications of the users drone compared to the random one selected in the database the user is given an outcome message of ‘YOU WON’ or ‘YOU LOST’.  
 
@@ -9,5 +15,5 @@ Additional features coming soon:
 -So the more the user races the more wins they will accumulate, and the more money they will earn allowing them to buy points and increase   the specs on the drone allowing a better chance to win races.
 -More tracks so you will have to tune your drone specifically for each track to get the best results
 
-![](images\Screenshot16.10.03.png)
+
 
