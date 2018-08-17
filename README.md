@@ -9,6 +9,6 @@ Additional features coming soon:
 -So the more the user races the more wins they will accumulate, and the more money they will earn allowing them to buy points and increase   the specs on the drone allowing a better chance to win races.
 -More tracks so you will have to tune your drone specifically for each track to get the best results
 
-![](images\Screenshot 2018-08-17 16.10.03.png)
-![](images\Screenshot 2018-08-17 16.12.24.png)
-![](images\Screenshot 2018-08-17 16.12.37.png)
+![](images\Screenshot16.10.03.png)
+![](images\Screenshot16.12.24.png)
+![](images\Screenshot16.12.37.png)
