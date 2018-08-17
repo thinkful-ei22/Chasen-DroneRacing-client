@@ -10,5 +10,4 @@ Additional features coming soon:
 -More tracks so you will have to tune your drone specifically for each track to get the best results
 
 ![](images\Screenshot16.10.03.png)
-![](images\Screenshot16.12.24.png)
-![](images\Screenshot16.12.37.png)
+
