@@ -14,6 +14,7 @@ export const WEIGHT_INC = 'WEIGHT_INC';
 export const DRAG_INC = 'DRAG_INC';
 export const DURABILITY_INC = 'DURABILITY_INC';
 export const HANDLING_INC = 'HANDLING_INC';
+import {API_BASE_URL} from '../config';
 
 export const tuneDroneRequest = () => ({
   type: TUNE_DRONE_REQUEST
@@ -40,7 +41,7 @@ export const findOpponentFailure = error => ({
 export const fetchOpponentDrone = id => dispatch => {
   dispatch(findOpponentRequest());
   console.log(id);
-  return fetch(`http://localhost:8080/api/drone/${id}`,{
+  return fetch(`${API_BASE_URL}/api/drone/${id}`,{
     method: "GET",
     headers:{
       'Content-Type': 'application/json'
@@ -67,7 +68,7 @@ export const fetchOpponentDrone = id => dispatch => {
 
 export const fetchDroneUpdate = (speed, acceleration, turning, weight, drag, durability, handling, pointBalance, user) => dispatch => {
   dispatch(tuneDroneRequest());
-  return fetch(`http://localhost:8080/api/drone/${user.droneId.id}`,{
+  return fetch(`${API_BASE_URL}/api/drone/${user.droneId.id}`,{
     method: "PUT",
     headers:{
       'Content-Type': 'application/json'
