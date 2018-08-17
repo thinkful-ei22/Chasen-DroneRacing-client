@@ -1,3 +1,4 @@
+import {API_BASE_URL} from '../config';
 export const START_RACE = 'START_RACE';
 export const TUNE_DRONE_REQUEST = 'TUNE_DRONE_REQUEST';
 export const TUNE_DRONE_SUCCESS = 'TUNE_DRONE_SUCCESS';
@@ -14,7 +15,7 @@ export const WEIGHT_INC = 'WEIGHT_INC';
 export const DRAG_INC = 'DRAG_INC';
 export const DURABILITY_INC = 'DURABILITY_INC';
 export const HANDLING_INC = 'HANDLING_INC';
-import {API_BASE_URL} from '../config';
+
 
 export const tuneDroneRequest = () => ({
   type: TUNE_DRONE_REQUEST
